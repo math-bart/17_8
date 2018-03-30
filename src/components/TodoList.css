@@ -1,0 +1,36 @@
+* {
+	box-sizing: border-box;
+}
+
+.board {
+	width: 36vw;
+	height: 36vw;
+	min-height: 270px;
+	min-width: 270px;
+	margin: 20px auto;
+	padding: 0;
+}
+
+.tile{
+	width: 4vw;
+	height: 4vw;
+	min-height: 30px;
+	min-width: 30px;
+	float: left;
+	text-align: center;
+	line-height: 4vw;
+	padding: 0;
+}
+
+input {
+	width: 4vw;
+	height: 4vw;
+	min-height: 30px;
+	min-width: 30px;
+	text-align: center;
+	line-height: 4vw;
+	background-color: #acd;
+	/*border: 1px solid red;*/
+	color: #4B0082;
+	font-size: 26px;
+}

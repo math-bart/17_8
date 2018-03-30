@@ -1,0 +1,15 @@
+.controls {
+	border: 1px solid red;
+	margin: 0 auto;
+	width: 500px;
+}
+
+h1 {
+	text-align: center;
+}
+
+button {
+	margin: 20px;
+	cursor: pointer;
+	font-size: 22px;
+}
