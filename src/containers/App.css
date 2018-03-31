@@ -1,15 +1,54 @@
+body {
+	background-image: url('http://amsarkadium-a.akamaihd.net/assets/global/game/html5-sudoku/ff8a5f03-a39a-479e-99d0-4a032cba90c2/426x283.jpg');
+	background-size: cover;
+}
+
 .controls {
-	border: 1px solid red;
+	background: #ffcc66;
 	margin: 0 auto;
-	width: 500px;
+	width: 330px;
+	padding: 15px 0;
 }
 
 h1 {
 	text-align: center;
+	color: #805500;
+	font-family: 'Pacifico', cursive;
+	font-size: 56px;
+	letter-spacing: 10px;
+	line-height: 36px;
 }
 
 button {
-	margin: 20px;
+	margin: 5px 20px;
 	cursor: pointer;
-	font-size: 22px;
+	font-size: 20px;
+	background: linear-gradient(#ffe6b3, #F4A460);
+	color: #b37700;
+}
+
+button:hover {
+	background: linear-gradient(#F4A460, #ffe6b3);
+}
+
+#2, #5, #11 {
+	border: 1px solid red;
+}
+
+.diff {
+	font-size: 18px;
+	
+}
+
+.nav {
+	margin: 0 auto;
+	text-align: center;
+	width: 500px;
+	padding: 15px 0;
+	background: #ffcc66;
+}
+
+.nav span {
+	font-size: 20px;
+	color: #805500;
 }

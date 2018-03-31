@@ -9,47 +9,67 @@ class App extends React.Component {
     this.state = {
 	  array: [],
 	  arrayChange: [],
-	  string: ''
+	  string: '',
+	  diff: 'easy',
+	  allArrays: []
     };
   }
+  
+  diffChange(event) {
+	  this.setState({diff: event.target.value});
+  }
+  
   reset() {
     const array1 = this.state.string.split('');
         const array = array1.map(element => (element ==='.') ? '' : element );
         this.setState({array: array1, arrayChange: array})
   }
-	
+  
   check() {
     const array1 = sudoku.solve(this.state.string).split('');
-	const array7 = array1.map(element => (element ==='.') ? '' : element );
-	console.log(array7.toString());
+	console.log(array1.toString());
 	console.log(this.state.arrayChange.toString());
-	if ( !(array7.toString() === this.state.arrayChange.toString()) ) {
+	if ( !(array1.toString() === this.state.arrayChange.toString()) ) {
 		alert('Not good');
+		
 	} else {
 	    alert('Win');
 	};
   }
 	
   generate() {
-    const string = sudoku.generate("easy");
+    const string = sudoku.generate(this.state.diff);
     console.log(string);
     this.setState({string}, () => {
         const array1 = this.state.string.split('');
         const array = array1.map(element => (element ==='.') ? '' : element );
-        this.setState({array: array1, arrayChange: array})
+        this.setState({array: array1, arrayChange: array, allArrays: []}, () => {
+		  //for undo/rendo
+		  const All = this.state.allArrays;
+		  All.splice(All.length, 0, array);
+          this.setState({allArrays: All});		
+		  console.log(this.state.allArrays);
+		});
 	});
   }
 
   solve() {
-    const array1 = sudoku.solve(this.state.string).split('');
-	const array = array1.map(element => (element ==='.') ? '' : element );
+    const array = sudoku.solve(this.state.string).split('');
+	//const array = array1.map(element => (element ==='.') ? '' : element );
 	this.setState({arrayChange: array});
   }
+  
   onChange(event, index) {
-	  if (this.state.array[index] === '.') {
-	  const array8 = this.state.arrayChange;
-	  array8.splice(index, 1, event.target.value);
-	  this.setState({arrayChange: array8})
+	  if (this.state.array[index] === '.') {      
+	    const array1 = this.state.arrayChange;
+	    array1.splice(index, 1, event.target.value);
+	    this.setState({arrayChange: array1}, () => {
+	      //for undo/rendo
+	      const All = this.state.allArrays;
+	      All[All.length] = this.state.arrayChange;
+	      console.log(All);
+          this.setState({allArrays: All});	
+	    });
 	  }
   }
   
@@ -57,10 +77,21 @@ class App extends React.Component {
     return (
 	  <div className='container'>
 	    <h1>SUDOKU</h1>
-		<List list={this.state.arrayChange} change={this.onChange.bind(this)}/>
+		<div className={style.nav}>
+		  <span>Choose difficult level and click "New Game"</span><br />
+		  <select name="diff" className={style.diff} onChange={(event) => this.diffChange(event)} value={this.state.diff}>
+            <option value="easy">easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>
+            <option value="very-hard">very-hard</option>
+			<option value="insane">insane</option>
+            <option value="inhuman">inhuman</option>
+          </select>
+		  <button onClick={() => this.generate()}>new game</button>
+        </div>
+		<List list={this.state.arrayChange} arr={this.state.array} change={this.onChange.bind(this)}/>
 		<div className={style.controls}>
           <button onClick={() => this.check()}>check</button>
-		  <button onClick={() => this.generate()}>new game</button>
 		  <button onClick={() => this.reset()}>restart</button>
 		  <button onClick={() => this.solve()}>solve</button>
 		</div>

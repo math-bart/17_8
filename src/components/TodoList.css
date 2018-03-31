@@ -3,8 +3,8 @@
 }
 
 .board {
-	width: 36vw;
-	height: 36vw;
+	width: 27vw;
+	height: 27vw;
 	min-height: 270px;
 	min-width: 270px;
 	margin: 20px auto;
@@ -12,25 +12,38 @@
 }
 
 .tile{
-	width: 4vw;
-	height: 4vw;
+	width: 3vw;
+	height: 3vw;
 	min-height: 30px;
 	min-width: 30px;
 	float: left;
 	text-align: center;
-	line-height: 4vw;
+	line-height: 3vw;
 	padding: 0;
 }
 
 input {
-	width: 4vw;
-	height: 4vw;
+	width: 3vw;
+	height: 3vw;
 	min-height: 30px;
 	min-width: 30px;
 	text-align: center;
-	line-height: 4vw;
+	line-height: 3vw;
 	background-color: #acd;
 	/*border: 1px solid red;*/
 	color: #4B0082;
 	font-size: 26px;
+}
+
+.red {
+	background-color: #F4A460;
+}
+
+.2, .5, .11, .3, .4 {
+	border: 1px solid red;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
