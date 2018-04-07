@@ -11,7 +11,8 @@ class App extends React.Component {
       arrayChange: [],
       string: '',
       diff: 'easy',
-      allArrays: []
+      allArrays: [],
+	  undoIndex: 0
     };
   }
   
@@ -43,18 +44,18 @@ class App extends React.Component {
       const array1 = this.state.string.split('');
       const array = array1.map(element => (element ==='.') ? '' : element );
       this.setState({array: array1, arrayChange: array, allArrays: []}, () => {
-        //for undo/rendo
+        //for undo/redo
         const All = this.state.allArrays;
-        All.push(array);
-        this.setState({allArrays: All});		
-        console.log(this.state.allArrays);
+		var clonedArray = JSON.parse(JSON.stringify(array));
+        All.push(clonedArray);
+        this.setState({allArrays: All});
+        console.log(this.state.allArrays);		
       });
     });
   }
 
   solve() {
     const array = sudoku.solve(this.state.string).split('');
-	//const array = array1.map(element => (element ==='.') ? '' : element );
     this.setState({arrayChange: array});
   }
   
@@ -62,15 +63,33 @@ class App extends React.Component {
     if (this.state.array[index] === '.') {      
       const array1 = this.state.arrayChange;
       array1.splice(index, 1, event.target.value);
-	  
-      this.setState({arrayChange: array1}, () => {
-        //for undo/rendo
-		const All = this.state.allArrays;
-		console.log(this.state.arrayChange);
-		All.push(this.state.arrayChange);
-        this.setState({allArrays: All}, () => {console.log(this.state.allArrays);});	
-      });
+      this.setState({arrayChange: array1});
+        //for undo/reno
+        var clonedArray = JSON.parse(JSON.stringify(array1));
+        const All = this.state.allArrays;
+        const newIndex = this.state.undoIndex + 1;	
+		console.log(newIndex);
+		All.splice(newIndex, 100 , clonedArray);
+        this.setState({allArrays: All, undoIndex: newIndex}, () => console.log(this.state.undoIndex)); 
+        console.log(this.state.allArrays);
+		
     }
+  }
+  
+  undo() {
+	  if (this.state.undoIndex > 0) {
+	  const newIndex = this.state.undoIndex 
+	  this.setState({undoIndex: newIndex -1}, () => {console.log(this.state.undoIndex); this.setState({arrayChange: this.state.allArrays[this.state.undoIndex]})});
+	  //console.log(this.state.arrayChange);
+	  }
+  }
+  
+  redo() {
+	  if (this.state.undoIndex < this.state.allArrays.length -1) {
+	  const newIndex = this.state.undoIndex;
+	  this.setState({undoIndex: newIndex +1}, () => {console.log(this.state.undoIndex); this.setState({arrayChange: this.state.allArrays[this.state.undoIndex]})});
+	  //console.log(this.state.arrayChange);
+  }
   }
   
   render() {
@@ -94,6 +113,8 @@ class App extends React.Component {
           <button onClick={() => this.check()}>check</button>
           <button onClick={() => this.reset()}>restart</button>
           <button onClick={() => this.solve()}>solve</button>
+		  <button onClick={() => this.undo()}>undo</button>
+          <button onClick={() => this.redo()}>redo</button>
         </div>
       </div>
     );

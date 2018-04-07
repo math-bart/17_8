@@ -6,7 +6,7 @@ body {
 .controls {
 	background: #ffcc66;
 	margin: 0 auto;
-	width: 330px;
+	width: 480px;
 	padding: 15px 0;
 }
 
@@ -20,7 +20,7 @@ h1 {
 }
 
 button {
-	margin: 5px 20px;
+	margin: 5px 15px;
 	cursor: pointer;
 	font-size: 20px;
 	background: linear-gradient(#ffe6b3, #F4A460);
@@ -31,9 +31,6 @@ button:hover {
 	background: linear-gradient(#F4A460, #ffe6b3);
 }
 
-#2, #5, #11 {
-	border: 1px solid red;
-}
 
 .diff {
 	font-size: 18px;

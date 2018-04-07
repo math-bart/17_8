@@ -39,8 +39,20 @@ input {
 	background-color: #F4A460;
 }
 
-.2, .5, .11, .3, .4 {
-	border: 1px solid red;
+.borderRight {
+	border-right: 2px solid black;
+}
+
+.borderBottom {
+	border-bottom: 2px solid black;
+}
+
+.borderTop {
+	border-top: 2px solid black;
+}
+
+.borderLeft {
+	border-left: 2px solid black;
 }
 
 input::-webkit-outer-spin-button,
