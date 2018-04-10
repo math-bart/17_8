@@ -74,7 +74,6 @@ class App extends React.Component {
     this.setState({arrayChange: array});
   }
   
-  
   onChange(event, index) {
     if (this.state.array[index] === '.') {      
       const array1 = this.state.arrayChange;
@@ -126,16 +125,20 @@ class App extends React.Component {
 	const array1 = array.map(element => (element ==='') ? '.' : element );
 	const string1 = array1.toString();
 	const string = string1.split(',').join('');
-	prompt('Copy to clipboard: Ctrl+C, Enter', string);
+	prompt('You need to copy your state: Ctrl+C, Enter', string + this.state.string);
   }
   
   loadFromString() {
-	const string = prompt('Enter string');
-	this.setState({string}, () => {
+    const string2 = prompt('Enter string that you saved');
+	const string = string2.slice(0, 81);
+    const string1 = string2.slice(81);
+    this.setState({string: string1}, () => {
       const array1 = this.state.string.split('');
-      const array = array1.map(element => (element ==='.') ? '' : element );
-      this.setState({array: array1, arrayChange: array, allArrays: []});
-	})
+      this.setState({undoIndex: -1, array: array1});
+      const array2 = string.split('');
+      const array = array2.map(element => (element ==='.') ? '' : element );
+      this.setState({arrayChange: array, allArrays: []});
+    })
   }
   
   render() {
