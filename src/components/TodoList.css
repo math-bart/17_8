@@ -39,6 +39,10 @@ input {
 	background-color: #F4A460;
 }
 
+.red  {
+	background-color: red;
+}
+
 .borderRight {
 	border-right: 2px solid black;
 }
@@ -58,4 +62,8 @@ input {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+.nothing {
+	display: none;
 }

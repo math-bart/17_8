@@ -34,7 +34,6 @@ button:hover {
 
 .diff {
 	font-size: 18px;
-	
 }
 
 .nav {
@@ -48,4 +47,9 @@ button:hover {
 .nav span {
 	font-size: 20px;
 	color: #805500;
+}
+
+.save {
+	width: 320px;
+	margin: 0 auto;
 }
