@@ -13,8 +13,8 @@ class App extends React.Component {
       string: '',
       diff: 'easy',
       allArrays: [],
-	  undoIndex: 0,
-	  checkView: 0
+      undoIndex: 0,
+      checkView: 0
     };
   }
   
@@ -39,7 +39,7 @@ class App extends React.Component {
   } 
   generate() {
     const string = sudoku.generate(this.state.diff);
-	localStorage.setItem('beginningGameState', string);
+    localStorage.setItem('beginningGameState', string);
     //console.log(localStorage.getItem('beginningGameState'));
     this.setState({string, undoIndex: 0}, () => {
       const array1 = this.state.string.split('');
@@ -47,7 +47,7 @@ class App extends React.Component {
       this.setState({array: array1, arrayChange: array, allArrays: []}, () => {
         //for undo/redo
         const All = this.state.allArrays;
-		var clonedArray = JSON.parse(JSON.stringify(array));
+        var clonedArray = JSON.parse(JSON.stringify(array));
         All.push(clonedArray);
         this.setState({allArrays: All});
         //console.log(this.state.allArrays);		
@@ -56,15 +56,15 @@ class App extends React.Component {
   }
   
   localStorage() {
-	if (localStorage.getItem('currentGameState') === null) {
-    alert("Sorry, you didn't play our game yet"); 
-	}
-	else {
-	  const array = localStorage.getItem('currentGameState').split('');
-	  const array1 = array.map(element => (element ==='.') ? '' : element );
-	  const string = localStorage.getItem('beginningGameState');
+    if (localStorage.getItem('currentGameState') === null) {
+      alert("Sorry, you didn't play our game yet"); 
+    }
+    else {
+      const array = localStorage.getItem('currentGameState').split('');
+      const array1 = array.map(element => (element ==='.') ? '' : element );
+      const string = localStorage.getItem('beginningGameState');
       const array2 = string.split('');
-	  this.setState({string, undoIndex: 0, array: array2, arrayChange: array1, allArrays: []}, () => {			
+      this.setState({string, undoIndex: 0, array: array2, arrayChange: array1, allArrays: []}, () => {			
       });  
     }
   }
@@ -80,22 +80,22 @@ class App extends React.Component {
       const array1 = this.state.arrayChange;
       array1.splice(index, 1, event.target.value);
       this.setState({arrayChange: array1}, () => { 
-	    //for save in localStorage
-		const array2 = array1;
-		const array3 = array2.map(element => (element ==='') ? '.' : element );
-		const string1 = array3.toString();
-		const string = string1.split(',').join('');
-		localStorage.setItem('currentGameState', string);
+        //for save in localStorage
+        const array2 = array1;
+        const array3 = array2.map(element => (element ==='') ? '.' : element );
+        const string1 = array3.toString();
+        const string = string1.split(',').join('');
+        localStorage.setItem('currentGameState', string);
         //for undo/redo
         var clonedArray = JSON.parse(JSON.stringify(array1));
         const All = this.state.allArrays;
         const newIndex = this.state.undoIndex + 1;	
-		console.log(newIndex);
-		All.splice(newIndex , 100 , clonedArray);
-		var clonedArray1 = JSON.parse(JSON.stringify(All));
+        console.log(newIndex);
+        All.splice(newIndex , 100 , clonedArray);
+        var clonedArray1 = JSON.parse(JSON.stringify(All));
         this.setState({allArrays: clonedArray1, undoIndex: newIndex}, () => console.log(this.state.undoIndex)); 
         console.log(this.state.allArrays);
-	  });
+      });
     }
   }
   
