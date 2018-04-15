@@ -1,17 +1,17 @@
 import React from 'react';
-import style from './TodoList.css';
+import style from './Board.css';
 import sudoku from 'sudoku-umd';
 
-const ListCheck = props => {
+const BoardCheck = props => {
   if (props.checkView === 1) {
   const borderRightTiles = [2, 5, 11, 14, 20, 23, 29, 32, 38, 41, 47, 50, 56, 65, 74, 83, 59, 68, 77];
   const borderBottomTiles = [18, 19, 20, 21, 22, 23, 24, 25, 26, 45, 46, 47, 48, 49, 50, 51, 52, 53];
   const borderLeftTiles = borderRightTiles.map( x => x + 1 );
   const borderTopTiles = borderBottomTiles.map( x => x + 9 );
   
-  const todoListElements = props.list.map((element, index) => {
+  const todoListElements = props.board.map((element, index) => {
   const arraySolve = sudoku.solve(props.string).split('');
-  if (arraySolve[index] === props.list[index]) {
+  if (arraySolve[index] === props.board[index]) {
   
   return (props.arr[index] === '.') ? 
   
@@ -52,6 +52,6 @@ const ListCheck = props => {
   )
  }
 }
-export default ListCheck;
+export default BoardCheck;
 
 	

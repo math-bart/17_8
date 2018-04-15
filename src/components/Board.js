@@ -1,14 +1,14 @@
 import React from 'react';
-import style from './TodoList.css';
+import style from './Board.css';
 
-const List = props => {
+const Board = props => {
   if (props.checkView === 0) {
   const borderRightTiles = [2, 5, 11, 14, 20, 23, 29, 32, 38, 41, 47, 50, 56, 65, 74, 83, 59, 68, 77];
   const borderBottomTiles = [18, 19, 20, 21, 22, 23, 24, 25, 26, 45, 46, 47, 48, 49, 50, 51, 52, 53];
   const borderLeftTiles = borderRightTiles.map( x => x + 1 );
   const borderTopTiles = borderBottomTiles.map( x => x + 9 );
   
-  const todoListElements = props.list.map((element, index) => 
+  const todoListElements = props.board.map((element, index) => 
   (props.arr[index] === '.') ? 
   
   <div key={index} className={style.tile} >
@@ -36,6 +36,6 @@ const List = props => {
  }
 }
 
-export default List;
+export default Board;
 
 	

@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "react-fontawesome": "^1.6.1",
+    "react-modal": "^3.3.2",
+    "react-responsive-modal": "^2.0.1",
     "sudoku-umd": "^1.0.1",
     "uuid": "^3.2.1"
   }

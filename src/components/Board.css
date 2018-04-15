@@ -64,6 +64,19 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+.win {
+	position:fixed;
+	top: 260px;
+	background: #ccc;
+	width: 80%;
+	margin: 0 10%;
+	background: linear-gradient(#ffe6b3, #F4A460);
+}
+
+.win * {
+	line-height: 115px;
+}
+
 .nothing {
 	display: none;
 }

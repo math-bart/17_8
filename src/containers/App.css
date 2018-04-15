@@ -6,7 +6,7 @@ body {
 .controls {
 	background: #ffcc66;
 	margin: 0 auto;
-	width: 480px;
+	width: 500px;
 	padding: 15px 0;
 }
 
@@ -34,6 +34,7 @@ button:hover {
 
 .diff {
 	font-size: 18px;
+	background: #ffe6b3;
 }
 
 .nav {
@@ -50,6 +51,29 @@ button:hover {
 }
 
 .save {
-	width: 320px;
-	margin: 0 auto;
+	width: 200px;
+	margin: 10px auto 0;
+}
+
+.modal {
+	height: 180px;
+	background: linear-gradient(#F4A460, #ffe6b3);
+	width: 80%;
+	margin: 100px 10%;
+	padding: 30px;
+	color: #805500;
+}
+
+.modalinput {
+	width: 100%;
+	font-size: 10px;
+	text-align: left;
+	display: block;
+	background: #ffe6b3;
+	margin: 20px 0;
+	height: 20px;
+}
+
+.modalclose {
+	margin-left: 90%;
 }
