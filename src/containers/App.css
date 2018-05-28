@@ -55,6 +55,10 @@ button:hover {
 	margin: 10px auto 0;
 }
 
+.save button { 
+	padding: 2px 7px;
+}
+
 .modal {
 	height: 180px;
 	background: linear-gradient(#F4A460, #ffe6b3);
@@ -76,4 +80,16 @@ button:hover {
 
 .modalclose {
 	margin-left: 90%;
+}
+
+@media(max-width: 600px) {
+	.nav {
+		width: 330px;
+	}
+	.controls {
+		width: 310px;
+	}
+	.controls button:nth-child(4) {
+		margin-left: 70px;
+	}
 }
